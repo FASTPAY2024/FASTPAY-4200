@@ -4,11 +4,11 @@ function copyAmount() {
         showPopup('copyModal', 'Amount copied to clipboard!');
     }).catch(err => {
         showPopup('copyModal', 'Failed to copy amount!');
-    });
+    }); shipanshil75-4@okhdfcbank
 }
 
 function copyUPI() {
-    const upi = 'shipanshil75-4@okhdfcbank';
+    const upi = 'unicashofficial02@okhdfcbank';
     navigator.clipboard.writeText(upi).then(() => {
         showPopup('copyModal', 'UPI copied to clipboard!');
     }).catch(err => {
