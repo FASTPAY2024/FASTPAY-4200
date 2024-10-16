@@ -1,10 +1,10 @@
 function copyAmount() {
-    const amount = '₹ 4200';
+    const amount = '₹ 3800';
     navigator.clipboard.writeText(amount).then(() => {
         showPopup('copyModal', 'Amount copied to clipboard!');
     }).catch(err => {
         showPopup('copyModal', 'Failed to copy amount!');
-    }); shipanshil75-4@okhdfcbank
+    });
 }
 
 function copyUPI() {
@@ -38,7 +38,9 @@ document.getElementById('confirmButton').onclick = function() {
         alert('Please enter a UTR number before submitting.');
     }
 };
-
+function myFunction (radio) {
+  var x = document.getElementById("rdaacls").value;
+}
 // Close modal when clicking outside
 window.onclick = function(event) {
     if (event.target == document.getElementById('copyModal')) {
