@@ -8,7 +8,7 @@ function copyAmount() {
 }
 
 function copyUPI() {
-    const upi = 'q208123989@ybl';
+    const upi = 'debsusmita1294@okaxis';
     navigator.clipboard.writeText(upi).then(() => {
         showPopup('copyModal', 'UPI copied to clipboard!');
     }).catch(err => {
