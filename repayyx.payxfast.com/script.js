@@ -1,51 +1,48 @@
-function copyAmount() {
-    const amount = '₹ 5700';
-    navigator.clipboard.writeText(amount).then(() => {
-        showPopup('copyModal', 'Amount copied to clipboard!');
-    }).catch(err => {
-        showPopup('copyModal', 'Failed to copy amount!');
-    });
-}
-
-function copyUPI() {
-    const upi = 'debsusmita1294@okaxis';
-    navigator.clipboard.writeText(upi).then(() => {
-        showPopup('copyModal', 'UPI copied to clipboard!');
-    }).catch(err => {
-        showPopup('copyModal', 'Failed to copy UPI!');
-    });
-}
-
-function showPopup(modalId, message) {
-    document.getElementById(modalId).style.display = "block";
-    document.getElementById('copyMessage').innerText = message;
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-}
-
-document.getElementById('submitUtrButton').onclick = function() {
-    document.getElementById('utrModal').style.display = "block";
-};
-
-document.getElementById('confirmButton').onclick = function() {
-    const utrValue = document.getElementById('utrInput').value;
-    if (utrValue) {
-        alert('UTR submitted: ' + utrValue);
-        closeModal('utrModal');
-    } else {
-        alert('Please enter a UTR number before submitting.');
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      amount: 4200,
+      vpa: 'sukh4580@pnb',
+      name: 'SUKHVINDER SINGH',
+      paymentMethod: '',
+      utr: '',
+      showPopup: false,
+      submittedUTRs: [],
+    };
+  },
+  methods: {
+    copy(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          this.$notify({ type: 'success', message: 'Copied to clipboard' });
+        })
+        .catch(err => {
+          this.$notify({ type: 'danger', message: 'Failed to copy' });
+        });
+    },
+    submitUTR() {
+      if (this.utr) {
+        if (this.submittedUTRs.includes(this.utr)) {
+          this.$notify({ type: 'danger', message: 'This UTR has already been used' });
+          return;
+        }
+        // Simulate a delay for demonstration purposes
+        setTimeout(() => {
+          console.log('Submitted UTR:', this.utr);
+          this.submittedUTRs.push(this.utr);
+          this.showPopup = true;
+        }, 1000);
+      } else {
+        this.$notify({ type: 'danger', message: 'Please enter UTR number' });
+      }
+    },
+    payFailed() {
+      console.log('Payment failed');
+      this.$notify({ type: 'danger', message: 'Payment failed' });
+    },
+    closePopup() {
+      this.showPopup = false;
     }
-};
-function myFunction (radio) {
-  var x = document.getElementById("rdaacls").value;
-}
-// Close modal when clicking outside
-window.onclick = function(event) {
-    if (event.target == document.getElementById('copyModal')) {
-        closeModal('copyModal');
-    } else if (event.target == document.getElementById('utrModal')) {
-        closeModal('utrModal');
-    }
-};
+  }
+});
