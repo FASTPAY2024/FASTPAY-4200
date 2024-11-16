@@ -11,23 +11,6 @@ new Vue({
       submittedUTRs: [],
     };
   },
-  mounted() {
-    // Order expiration logic (using localStorage)
-    const startTime = localStorage.getItem('orderStartTime') || Date.now();
-    localStorage.setItem('orderStartTime', startTime);
-
-    const checkOrderExpiration = () => {
-      const currentTime = Date.now();
-      const elapsedTime = currentTime - startTime;
-
-      if (elapsedTime >= none) { 
-        window.location.href = 'order-expire.html';
-      } else {
-        setTimeout(checkOrderExpiration, 60000); 
-      }
-    };
-    checkOrderExpiration();
-  },
   methods: {
     copy(text) {
       navigator.clipboard.writeText(text)
@@ -45,24 +28,24 @@ new Vue({
           return;
         }
         this.showPopup = true;
+        this.submittedUTRs.push(this.utr);
         setTimeout(() => {
           console.log('Submitted UTR:', this.utr);
-          this.submittedUTRs.push(this.utr);
-          window.location.href = 'success.html'; 
-        }, 50000); 
+          window.location.href = 'success.html';
+        }, 50000);
       } else {
         this.$notify({ type: 'danger', message: 'Please enter UTR number' });
       }
     },
     payFailed() {
       console.log('Payment failed');
-      this.showPopup = false; 
+      this.showPopup = false;
       this.$notify({ type: 'danger', message: 'Payment failed' });
       setTimeout(() => {
-        window.location.href = 'bank.html'; 
-      }, 1000); 
+        window.location.href = 'bank.html';
+      }, 1000);
     },
-    closePopup() { 
+    closePopup() {
       this.showPopup = false;
     }
   }
