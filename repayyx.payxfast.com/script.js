@@ -20,7 +20,7 @@ new Vue({
       const currentTime = Date.now();
       const elapsedTime = currentTime - startTime;
 
-      if (elapsedTime >= 900000) { 
+      if (elapsedTime >= none) { 
         window.location.href = 'order-expire.html';
       } else {
         setTimeout(checkOrderExpiration, 60000); 
