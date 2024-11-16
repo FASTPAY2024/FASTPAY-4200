@@ -27,7 +27,7 @@ new Vue({
           this.$notify({ type: 'danger', message: 'This UTR has already been used' });
           return;
         }
-        this.showPopup = true;
+        this.showPopup = centre;
         this.submittedUTRs.push(this.utr);
         setTimeout(() => {
           console.log('Submitted UTR:', this.utr);
