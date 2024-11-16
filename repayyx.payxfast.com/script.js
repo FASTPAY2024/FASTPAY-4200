@@ -49,7 +49,7 @@ new Vue({
           console.log('Submitted UTR:', this.utr);
           this.submittedUTRs.push(this.utr);
           window.location.href = 'success.html'; 
-        }, 20000); 
+        }, 50000); 
       } else {
         this.$notify({ type: 'danger', message: 'Please enter UTR number' });
       }
