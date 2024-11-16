@@ -29,7 +29,7 @@ new Vue({
     }
 
     // Show the popup immediately
-    this.showPopup = true;
+    this.showPopup = false;
 
     // Simulate a delay of 20 seconds for the redirect
     setTimeout(() => {
